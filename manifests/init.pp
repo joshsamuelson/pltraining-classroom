@@ -61,4 +61,12 @@ class classroom (
 
   # temporary compatibility shim for PE 3.x
   include classroom::compatibility
+
+  # Override broken repo class for 2015.2.0
+  if $offline {
+    file { '/opt/puppetlabs/puppet//modules/pe_repo/manifests/repo.pp':
+      ensure => file,
+      source => 'puppet:///modules/classroom/repo.pp',
+    }
+  }
 }
