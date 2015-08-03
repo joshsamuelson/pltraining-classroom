@@ -67,6 +67,7 @@ class classroom (
     file { '/opt/puppetlabs/puppet//modules/pe_repo/manifests/repo.pp':
       ensure => file,
       source => 'puppet:///modules/classroom/repo.pp',
+      before => Class['pe_repo::platform::el_6_i386'],
     }
   }
 }
