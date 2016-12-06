@@ -2,7 +2,7 @@ require 'spec_helper_acceptance'
 
 describe 'fundamentals' do
     before(:all) do
-      sleep_until_puppetserver_started(master)
+      sleep_until_pe_started(master, 10)
       on master, "echo 'node default { include classroom::course::fundamentals }' > /etc/puppetlabs/code/environments/production/manifests/site.pp"
     end
 

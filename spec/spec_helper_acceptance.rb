@@ -12,3 +12,8 @@ rakefile =
   end
 EOS
 create_remote_file(master, "/home/training/courseware/Rakefile", rakefile)
+
+def sleep_until_pe_started(host, interval, port = nil)
+  port = options[:puppetserver_port] if port.nil?
+  curl_with_retries("start puppetserver (ssl)", host, "https://#{host.node_name}:#{port}", [35, 60], 60, interval)
+end
