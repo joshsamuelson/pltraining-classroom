@@ -1,5 +1,6 @@
 require 'beaker-rspec'
 
+on master, "sed -e '/domain/d' -e '/search/d' -i /etc/resolv.conf"
 on default, puppet('module', 'install', 'pltraining-classroom', '--modulepath=/etc/puppetlabs/code/modules')
 copy_module_to(default, source: '.', module_name: 'classroom', target_module_path: '/etc/puppetlabs/code/modules')
 

@@ -10,3 +10,4 @@ HOSTS:
     box: pltraining/master
 CONFIG:
   type: pe
+
