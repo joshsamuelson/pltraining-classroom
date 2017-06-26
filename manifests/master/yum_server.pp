@@ -1,6 +1,6 @@
 # Host the local yum cache alongside the puppet packages
 class classroom::master::yum_server {
-  file { $classroom::repo_base_path:
+  dirtree { $classroom::repo_base_path:
     ensure => directory,
   }
   $classroom::repos.each |$repo_name,$repo_path| {

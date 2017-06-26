@@ -30,7 +30,7 @@ class classroom::params {
   }
 
   # Upstream yum repositories
-  $repositories = [ 'base', 'extras', 'updates' ]
+  $repositories = [ 'base', 'extras', 'updates', 'local' ]
 
   # manage git repositories for the student and the master
   $manage_repos = true
@@ -110,6 +110,10 @@ class classroom::params {
 
   $repo_base_path = '/opt/puppetlabs/server/data/packages/public/yum'
   $repos = {
-    'local'    => "/var/yum/mirror/",
+    'local'   => '/var/yum/mirror/',
+    'base'    => "/var/yum/mirror/centos/${::operatingsystemmajrelease}/os/",
+    'extras'  => "/var/yum/mirror/centos/${::operatingsystemmajrelease}/extras/",
+    'updates' => "/var/yum/mirror/centos/${::operatingsystemmajrelease}/updates/",
+    'epel'    => "/var/yum/mirror/epel/${::operatingsystemmajrelease}/local/",
   }
 }
